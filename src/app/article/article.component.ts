@@ -1,4 +1,4 @@
-import { Component, HostBinding, OnInit } from '@angular/core';
+import { Component, HostBinding, Input, OnInit } from '@angular/core';
 
 import { Article } from './article.model';
 
@@ -8,15 +8,12 @@ import { Article } from './article.model';
   styleUrls: ['./article.component.css']
 })
 export class ArticleComponent implements OnInit {
+  // gives the generated componentn a css class
   @HostBinding('attr.class') cssClass = 'row';
-  article: Article;
+  // defines the input that the component can receive
+  @Input() article!: Article;
 
-  constructor() {
-    this.article = new Article(
-      'Angular',
-      'http://angular.io',
-      10);
-  }
+  constructor () {}
 
   voteUp() : boolean {
     this.article.voteUp();
